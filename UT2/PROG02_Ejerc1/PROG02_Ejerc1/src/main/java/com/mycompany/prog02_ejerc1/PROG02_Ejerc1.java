@@ -19,15 +19,17 @@ public class PROG02_Ejerc1 {
     String name = "David Graciá Requena";
     // "String" es adecuado para el nombre del mes y de la persona ya que permite almacenar cadenas de caracteres
 
-    char gender = 'V';
-    // "char" para almacenar un único carácter
-
+    enum Gender {H, M};
+    Gender gender = Gender.H;
+    // "enum" ya que H y M son un grupo de dos constantes que podremos elegir
+    
     long milisecondsSince1970 = System.currentTimeMillis();
     /* "long" es perfecto para almacenar los milisegundos desde el 01/01/1970 ya que permite rangos numéricos de -2e63 a 2e63-1 
     así que no se nos quedará pequeño aunque pasen los años */
 
-    float bankBalance = 16254.25F;
-    // "double"
+    double bankBalance = 16254.97D;
+    /* "float" creo que podría ser suficiente en este caso ya que tiene un rango suficiente, aunque en el caso de operaciones bancarias
+    he estado leyendo que "double" es mejor para mantener toda la precisión posible*/
 
     int kmsToJupiter = 587000000;
     // "int" sería suficiente en este caso ya que permite valores de –2,147,483,648 a 2,147,483,647 
@@ -43,5 +45,7 @@ public class PROG02_Ejerc1 {
       "\nBank balance: " + bankBalance +
       "\nKms to Jupiter: " + kmsToJupiter
     );
+    
   }
 }
+
