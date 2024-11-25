@@ -7,7 +7,8 @@ import java.util.Scanner;
 
 public class PROG02_Ejerc5 {
 
-    static void secondsCounter(long seconds){      
+    // Función que imprime por pantalla cuantos días, horas y minutos hay en un determinado nº de segundos
+    static void secondsCounter(long seconds){   
       long days = seconds/86400;
       long daysRest = seconds%86400;
       

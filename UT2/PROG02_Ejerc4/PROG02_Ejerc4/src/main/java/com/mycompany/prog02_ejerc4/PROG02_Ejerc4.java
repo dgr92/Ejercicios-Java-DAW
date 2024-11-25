@@ -6,6 +6,7 @@ import java.util.Scanner;
  */
 public class PROG02_Ejerc4 {
  
+    // Función que devuelve true si la edad es mayor o igual a 18 y false si es menor de 18
     private static boolean EsMayorDeEdad(int edad){ 
       return edad >= 18;
      };
@@ -15,8 +16,10 @@ public class PROG02_Ejerc4 {
       
       int edad = sc.nextInt();
       
+      // Variable que almacena el booleano devuelto pror la función al pasarle el parámetro edad (nº entero que introducimos por teclado)
       boolean mayorDeEdad = EsMayorDeEdad(edad);
       
+      // Mediante un operador ternario se imprime que es mayor o menor de edad en función del true o false devuelto por la función.
       System.out.println((mayorDeEdad) ? "Es mayor de edad." : "Es menor de edad.");
     };
 };
