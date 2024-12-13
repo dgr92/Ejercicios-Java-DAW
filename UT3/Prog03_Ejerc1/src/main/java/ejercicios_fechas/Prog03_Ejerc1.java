@@ -10,7 +10,7 @@ public class Prog03_Ejerc1 {
       
       Fecha objFecha1 = new Fecha(Fecha.enumMes.JUNIO);
       
-      objFecha1.setDia(19);
+      objFecha1.setDia(27);
       objFecha1.setAnio(2024);
 
       System.out.println( "La fecha 1 es: " + objFecha1.toString() );
@@ -22,9 +22,8 @@ public class Prog03_Ejerc1 {
       
       Fecha objFecha2 = new Fecha(31, Fecha.enumMes.OCTUBRE, 2020);
       
-      System.out.println( "La fecha 2 contiene el año: " + objFecha2.anio );
+      System.out.println( "La fecha 2 es del año: " + objFecha2.getAnio() );
       System.out.println( "La fecha 2 es: " + objFecha2.toString() );
-      System.out.println( (objFecha2.isSummer()) ? "SI es verano" : "NO es verano");
-    };
-    
+      System.out.println( (objFecha2.isSummer()) ? "SI es verano" : "NO es verano" );
+    }
 }

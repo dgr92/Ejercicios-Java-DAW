@@ -19,9 +19,9 @@ public class Fecha {
     DICIEMBRE;
   };
   
-  int dia;
-  enumMes mes;
-  int anio;
+  private int dia;
+  private enumMes mes;
+  private int anio;
   
   
   // Constructor que inicializa mes al valor introducido y día y año a 0
@@ -76,7 +76,6 @@ public class Fecha {
        (this.dia < 23 && this.mes == enumMes.SEPTIEMBRE))
     {
       return true;
-      
     }else{
       return false;
     }
@@ -87,6 +86,6 @@ public class Fecha {
   public String toString(){
     String fechaString = this.dia + " de " + this.mes + " de " + this.anio;
     
-    return fechaString;
+    return fechaString.toLowerCase();
   }
 }
