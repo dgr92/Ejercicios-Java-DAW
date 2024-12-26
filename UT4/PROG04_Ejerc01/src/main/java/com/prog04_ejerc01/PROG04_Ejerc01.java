@@ -5,7 +5,7 @@ import java.util.Scanner;
  * Esta clase implementa un programa que muestra la tabla de multiplicar de un número leido desde teclado utilizando tres bucles diferentes:
  * for, while y do-while. El número leído desde teclado debe ser menor que 30. 
  * En caso contrario se mostrará un mensaje por pantalla y el programa finalizará.
- * @author David Graciá
+ * @author David Graciá Requena
  */
 public class PROG04_Ejerc01 {
   
@@ -37,11 +37,11 @@ public class PROG04_Ejerc01 {
     public static void mostrarTablaMultiplicarFor(int number){
       //Bucle for
       System.out.println("\nCon bucle For:\n");
-
       
       for (int i = 0; i <= 10; i++) {
         System.out.println(number + " x " + i + " = " + number*i);
       }
+      
       System.out.println("\n-----------------------\n");
     }
     
@@ -61,7 +61,6 @@ public class PROG04_Ejerc01 {
       }
       
       System.out.println("\n-----------------------\n");
-
     }
     
     /**
@@ -71,6 +70,7 @@ public class PROG04_Ejerc01 {
     public static void mostrarTablaMultiplicarDoWhile(int number){
       // Bucle do-while
       System.out.println("\nCon bucle Do While:\n");
+      
       int i = 0;
       
       do{
@@ -79,7 +79,6 @@ public class PROG04_Ejerc01 {
       }while(i <= 10);
       
       System.out.println("\n-----------------------\n");
-
     }
 }
 
