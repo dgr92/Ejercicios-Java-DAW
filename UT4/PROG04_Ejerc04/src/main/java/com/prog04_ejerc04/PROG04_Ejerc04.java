@@ -87,7 +87,7 @@ public class PROG04_Ejerc04 {
         numMax = 10;
         numInt = 5;
         System.out.println("No has configurado partida. Se aplicarán valores por defecto.");
-        System.out.println("Nº de intentos: " + numInt + "\n Nº máximo generado: " + numMax + "\n");
+        System.out.println("Nº de intentos: " + numInt + "\nNº máximo generado: " + numMax + "\n");
       }
       
       int secretNum = (int)Math.floor(Math.random()*numMax+1); //genera un número aleatorio entre 0 y numMax, ambos incluidos.
