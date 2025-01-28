@@ -1,6 +1,5 @@
 package com.prog05_ejerc1;
-import java.util.Date;
-import java.time.Year;
+import java.util.Calendar;
 
 /**
  * @author David
@@ -11,15 +10,16 @@ public class Libro {
   private long isbn;
   private int numPags;
   private String descripcion;  
-  private Date anioPublicacion;
+  private int anioPublicacion;
   private int numEdicion;
   
+ 
   
   // Constructor por defecto
   protected Libro(){};
   
   // Constructor con valores
-  protected Libro(String titulo, String autor, long isbn, int numPags, String descripcion, Date anioPublicacion, int numEdicion){
+  protected Libro(String titulo, String autor, long isbn, int numPags, String descripcion, int anioPublicacion, int numEdicion){
     this.titulo = titulo;
     this.autor = autor;
     this.isbn = isbn;
@@ -56,15 +56,15 @@ public class Libro {
     return numEdicion;
   };
   
-  protected Date getFechaPublicacion(){
+  protected int getAnioPublicacion(){
     return anioPublicacion;
   };
   
-  protected Year getAntiguedad(){
-    Year anioActual = Year.now();
-    System.out.println(anioActual);
-    return anioActual;
+  protected int getAntiguedad(int anioPublicacion){
+    int anioActual = Calendar.getInstance().get(Calendar.YEAR);
+    return anioActual - anioPublicacion;
   }
+  
   
   
   // Setters 
@@ -92,7 +92,7 @@ public class Libro {
      this.numEdicion = numEdicion;
   };
   
-  protected void setAnioPublicacion(Date anioPublicacion){
+  protected void setAnioPublicacion(int anioPublicacion){
     this.anioPublicacion = anioPublicacion;
   };
 }
