@@ -1,6 +1,7 @@
 package com.prog05_ejerc1;
 import java.util.Scanner;
 import com.prog05_ejerc1.Libro;
+import com.prog05_ejerc1_util.Validaciones;
 
 /**
  * @author David
@@ -8,18 +9,19 @@ import com.prog05_ejerc1.Libro;
 public class Principal {
 
   public static void main(String[] args) {
-    boolean exit = false;
+    Scanner sc = new Scanner(System.in);
     Libro libro = new Libro();
+    boolean exit = false;
     
-    String nuevoTitulo;
-    String nuevoAutor;
-    long nuevoIsbn;
-    int nuevoNumPags;
-    String nuevoDescripcion;  
-    int nuevoAnioPublicacion;
+    String titulo;
+    String autor;
+    long isbn;
+    int numPags;
+    String descripcion;  
+    int anioPublicacion;
+    int numEdicion = 0;
     int nuevoNumEdicion;
 
-    Scanner sc = new Scanner(System.in);
 
     while (!exit) {        
       System.out.println("\n------------------------------------");
@@ -37,37 +39,61 @@ public class Principal {
       System.out.println("10. Salir.");
       System.out.println("------------------------------------\n\n");
       
-      
+
       switch (sc.nextInt()) {
         case 1:
           System.out.println("1. Nuevo Libro.");
           System.out.println("Por favor inserta los siguientes datos: ");
+          sc.nextLine(); // Limpia el buffer
           
+
           System.out.print("Título: ");
-          nuevoTitulo = sc.nextLine();
-          sc.next();
+          titulo = sc.nextLine();
           
+
           System.out.print("Autor: ");
-          nuevoAutor = sc.nextLine();
-          sc.next();
+          autor = sc.nextLine();
+
 
           System.out.print("ISBN: ");
-          nuevoIsbn = sc.nextLong();
+          isbn = sc.nextLong();
+          if (!Validaciones.validarIsbn(isbn)) {
+            break;
+          }
+          sc.nextLine(); // Limpia el buffer
           
+
           System.out.print("Número de Páginas: ");
-          nuevoNumPags = sc.nextInt();
+          numPags = sc.nextInt();
+          sc.nextLine(); // Limpia el buffer
           
+
           System.out.print("Descripción: ");
-          nuevoDescripcion = sc.next(); 
+          descripcion = sc.nextLine(); 
           
+
           System.out.print("Año de Publicación: ");
-          nuevoAnioPublicacion = sc.nextInt();
+          anioPublicacion = sc.nextInt();
+          if(!Validaciones.validarAnioPublicacion(anioPublicacion)){
+            break;
+          }
+          sc.nextLine(); // Limpia el buffer
           
+
           System.out.print("Número de Edición: ");
-          nuevoNumEdicion = sc.nextInt();
+          numEdicion = sc.nextInt();
+          if (!Validaciones.validarNumEdiciones(numEdicion)) {
+            break;
+          }
+          sc.nextLine(); // Limpia el buffer
+
           
-          libro = new Libro(nuevoTitulo, nuevoAutor, nuevoIsbn, nuevoNumPags, nuevoDescripcion, nuevoAnioPublicacion, nuevoNumEdicion);
+          libro = new Libro(titulo, autor, isbn, numPags, descripcion, anioPublicacion, numEdicion);
           
+          System.out.println("\n-------------------------");
+          System.out.println("Libro creado con éxito.");
+          System.out.println("-------------------------\n");
+
           break;
         
         case 2:
@@ -94,7 +120,13 @@ public class Principal {
         
         case 6:
           System.out.println("6. Actualizar número de ediciones.");
-          libro.setNumEdicion(sc.nextInt());
+          System.out.print("Introduce el nuevo Número de Edición:");
+          nuevoNumEdicion = sc.nextInt();
+          while(!Validaciones.validarNuevoNumEdicion(numEdicion, nuevoNumEdicion)){
+            nuevoNumEdicion = sc.nextInt();
+          }
+
+          libro.setNumEdicion(nuevoNumEdicion);
           break;
         
         case 7:
@@ -118,11 +150,9 @@ public class Principal {
         
         case 10:
           exit = true;
+          sc.close();
           System.out.println("Finalizando programa.");
           break;
-          
-        default:
-          throw new AssertionError();
       }
     }
   }
