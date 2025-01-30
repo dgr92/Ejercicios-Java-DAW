@@ -2,9 +2,11 @@ package com.prog05_ejerc1;
 import java.util.Calendar;
 
 /**
- * @author David
+ * Clase Libro que contiene los atributos y métodos de un libro.
+ * @author David Graciá Requena
  */
 public class Libro {
+  // Atributos del libro
   private String titulo;
   private String autor;
   private long isbn;
@@ -12,9 +14,8 @@ public class Libro {
   private String descripcion;  
   private int anioPublicacion;
   private int numEdicion;
-  
  
-  
+
   // Constructor por defecto
   protected Libro(){};
   
@@ -28,7 +29,6 @@ public class Libro {
     this.anioPublicacion = anioPublicacion;    
     this.numEdicion = numEdicion;
   };
-  
   
   
   // Getters
@@ -60,11 +60,15 @@ public class Libro {
     return anioPublicacion;
   };
   
-  protected int getAntiguedad(int anioPublicacion){
+  /**
+   * Método que devuelve los años de antigüedad del libro
+   * @param anioPublicacion Año de publicación del libro
+   * @return int Años de antigüedad
+   */
+  protected int getAntiguedad(int anioPublicacion){ 
     int anioActual = Calendar.getInstance().get(Calendar.YEAR);
     return anioActual - anioPublicacion;
   }
-  
   
   
   // Setters 
