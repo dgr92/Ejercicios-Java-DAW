@@ -1,5 +1,5 @@
 package com.prog05_ejerc1_util;
-import java.time.Year;
+import java.util.Calendar;
 
 
 /**
@@ -73,8 +73,8 @@ public class Validaciones {
    * @return boolean
    */
   public static boolean validarAnioPublicacion(int anioPublicacion){
-    Year actualYear = Year.now();
-    if(anioPublicacion > Integer.parseInt(actualYear.toString())){
+    int actualYear = Calendar.getInstance().get(Calendar.YEAR);
+    if(anioPublicacion > actualYear){
       System.out.println("-------------------------------------------------------------");
       System.out.println("ERROR!! El Año de Publicacióndebe de ser menor al año actual.");
       System.out.println("Por favor. Introduce un Año de Publicación válido.");
