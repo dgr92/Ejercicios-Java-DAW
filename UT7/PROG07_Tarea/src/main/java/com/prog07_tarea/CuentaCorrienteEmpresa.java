@@ -1,16 +1,14 @@
 package com.prog07_tarea;
 
-import java.util.ArrayList;
-
 public class CuentaCorrienteEmpresa extends CuentaCorriente {
   protected float tipoInteresDescubierto;
-  protected double maxInteresDescubierto;
+  protected double maxDescubierto;
   protected double comisionDescubierto;
 
-  protected CuentaCorrienteEmpresa(Persona titular, double saldo, String iban, ArrayList<String> listaEntidades, float tipoInteresDescubierto, double maxInteresDescubierto, double comisionDescubierto){
-    super(titular, saldo, iban, listaEntidades);
+  protected CuentaCorrienteEmpresa(Persona titular, double saldo, String iban, float tipoInteresDescubierto, double maxDescubierto, double comisionDescubierto){
+    super(titular, saldo, iban);
     this.tipoInteresDescubierto = tipoInteresDescubierto;
-    this.maxInteresDescubierto = maxInteresDescubierto;
+    this.maxDescubierto = maxDescubierto;
     this.comisionDescubierto = comisionDescubierto;
   };
 
@@ -18,7 +16,7 @@ public class CuentaCorrienteEmpresa extends CuentaCorriente {
     return "Titular: " + titular.nombre + " " + titular.apellidos + "\n" +
             "Saldo: " + saldo + "\n" +
             "IBAN: " + iban + "\n" +
-            "Máximo interés por descubierto: " + maxInteresDescubierto + "\n" + 
+            "Máximo descubierto permitido: " + maxDescubierto + "\n" + 
             "Tipo de interés por descubierto: " + tipoInteresDescubierto + "\n" + 
             "Comisión por descubierto: " + comisionDescubierto + "\n" + 
             "Lista de entidades: " + listaEntidades + "\n";

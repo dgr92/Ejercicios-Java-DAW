@@ -1,12 +1,11 @@
 package com.prog07_tarea;
 
-import java.util.ArrayList;
 
 public class CuentaCorrientePersonal extends CuentaCorriente {
     protected double comisionMantenimiento;
 
-    protected CuentaCorrientePersonal(Persona titular, double saldo, String iban, ArrayList<String> listaEntidades, double comisionMantenimiento){
-        super(titular, saldo, iban, listaEntidades);
+    protected CuentaCorrientePersonal(Persona titular, double saldo, String iban, double comisionMantenimiento){
+        super(titular, saldo, iban);
         this.comisionMantenimiento = comisionMantenimiento;
     };
 
