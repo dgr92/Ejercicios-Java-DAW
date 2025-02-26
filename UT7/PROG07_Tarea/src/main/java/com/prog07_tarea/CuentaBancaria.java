@@ -12,4 +12,8 @@ public abstract class CuentaBancaria implements Imprimible{
     this.saldo = saldo;
     this.iban = iban;
   };
+
+  protected String getIban(){
+    return iban;
+  };
 }

@@ -85,17 +85,17 @@ public class Principal {
 
 
           do {
-            System.out.print("\nSaldo inicial: ");
-            try {
+              System.out.print("\nSaldo inicial: ");
               saldo = sc.nextDouble();
               sc.nextLine(); // Limpia el buffer
-  
-            } catch (InputMismatchException e) {
-              System.out.println("-----------------------------------------------------");
-              System.out.println("ERROR!! El saldo introducido no es un número válido.");
-              System.out.println("-----------------------------------------------------");
-            }
-          } while (saldo < 0);
+
+              if(saldo < 0){ // Controla que el saldo introducido sea mayor que cero
+                System.out.println("-----------------------------------------------------");
+                System.out.println("ERROR!! El saldo introducido no puede ser negativo.");
+                System.out.println("-----------------------------------------------------");
+              }
+            
+          } while (saldo < 0D); // Controla que el saldo introducido sea mayor que cero y sea un tipo de dato válido
 
 
           System.out.print("\nIBAN: ");
@@ -154,21 +154,123 @@ public class Principal {
                 System.out.println("-----------------------------------------------------");
             }
           break;
+
       
         case 2: // Muestra un listado de las cuentas disponibles
-          banco.listadoCuentas(); //todo: IMPLEMENTEAR IMPRESION
+          for(int i = 0; i < banco.listadoCuentas().size(); i++){
+            System.out.println(banco.listadoCuentas().get(i));
+          }
           break;
-        
+
+          
         case 3: // Muestra los datos de una cuenta concreta
+          System.out.print("Introduce el IBAN de la cuenta que deseas consultar: ");
+          sc.nextLine(); // Limpia el buffer de entrada
+          do { // Bucle que se repite mientras que el IBAN introducido no sea válido
+              iban = sc.nextLine();
+              matcherIban = patternIban.matcher(iban); // Comprueba que el IBAN introducido sea válido
+
+              if(!matcherIban.matches()){ // Controla que el IBAN introducido sea válido
+                System.out.println("--------------------------------------------------------");
+                System.out.println("ERROR!! El IBAN introducido no tiene un formato válido. ");
+                System.out.println("Debe ser un formato ESNNNNNNNNNNNNNNNNNNNN. (20 dígitos)");
+                System.out.println("--------------------------------------------------------");
+              }        
+              System.out.print("Introduce el IBAN de la cuenta que deseas consultar: ");
+          } while (!matcherIban.matches());
+
+          System.out.println(banco.informacionCuenta(iban));
           break;
         
         case 4: // Realiza un ingreso en una cuenta
+        do{
+          System.out.print("Introduce el IBAN de la cuenta en la que deseas realizar el ingreso: ");
+          sc.nextLine(); // Limpia el buffer de entrada
+            iban = sc.nextLine();
+              matcherIban = patternIban.matcher(iban); // Comprueba que el IBAN introducido sea válido
+
+              if(!matcherIban.matches()){ // Controla que el IBAN introducido sea válido
+                System.out.println("--------------------------------------------------------");
+                System.out.println("ERROR!! El IBAN introducido no tiene un formato válido. ");
+                System.out.println("Debe ser un formato ESNNNNNNNNNNNNNNNNNNNN. (20 dígitos)");
+                System.out.println("--------------------------------------------------------");
+              }        
+          }while(!matcherIban.matches());
+
+          do {
+            System.out.print("\nSaldo a ingresar: ");
+            saldo = sc.nextDouble();
+            sc.nextLine(); // Limpia el buffer
+
+            if(saldo < 0){ // Controla que el saldo introducido sea mayor que cero
+              System.out.println("-----------------------------------------------------");
+              System.out.println("ERROR!! El saldo introducido no puede ser negativo.");
+              System.out.println("-----------------------------------------------------");
+            }
+          } while (saldo < 0D);
+
+          if(banco.ingresoCuenta(iban, saldo)){
+            System.out.println("Ingreso realizado correctamente.");
+          } else {
+            System.out.println("------------------------------------------");
+            System.out.println("ERROR!! No se ha podido realizar el ingreso.");
+            System.out.println("------------------------------------------");
+          }
           break;
         
         case 5: // Retira efectivo de una cuenta
+          do{
+            System.out.print("Introduce el IBAN de la cuenta en la que deseas realizar el retiro: ");
+            sc.nextLine(); // Limpia el buffer de entrada
+            iban = sc.nextLine();
+            matcherIban = patternIban.matcher(iban); // Comprueba que el IBAN introducido sea válido
+
+            if(!matcherIban.matches()){ // Controla que el IBAN introducido sea válido
+              System.out.println("--------------------------------------------------------");
+              System.out.println("ERROR!! El IBAN introducido no tiene un formato válido. ");
+              System.out.println("Debe ser un formato ESNNNNNNNNNNNNNNNNNNNN. (20 dígitos)");
+              System.out.println("--------------------------------------------------------");
+            }        
+          }while(!matcherIban.matches());
+
+          do {
+            System.out.print("\nSaldo a retirar: ");
+            saldo = sc.nextDouble();
+            sc.nextLine(); // Limpia el buffer
+
+            if(saldo < 0){ // Controla que el saldo introducido sea mayor que cero
+              System.out.println("-----------------------------------------------------");
+              System.out.println("ERROR!! El saldo introducido no puede ser negativo.");
+              System.out.println("-----------------------------------------------------");
+            }
+          } while (saldo < 0D);
+
+          if(banco.retiradaCuenta(iban, saldo)){
+            System.out.println("Retiro realizado correctamente.");
+          } else {
+            System.out.println("------------------------------------------");
+            System.out.println("ERROR!! No se ha podido realizar el retiro.");
+            System.out.println("------------------------------------------");
+
+          }
           break;
 
         case 6: // Consulta el saldo actual de una cuenta
+          do{
+            System.out.print("Introduce el IBAN de la cuenta de la que deseas comprobar el saldo: ");
+            sc.nextLine(); // Limpia el buffer de entrada
+            iban = sc.nextLine();
+            matcherIban = patternIban.matcher(iban); // Comprueba que el IBAN introducido sea válido
+
+            if(!matcherIban.matches()){ // Controla que el IBAN introducido sea válido
+              System.out.println("--------------------------------------------------------");
+              System.out.println("ERROR!! El IBAN introducido no tiene un formato válido. ");
+              System.out.println("Debe ser un formato ESNNNNNNNNNNNNNNNNNNNN. (20 dígitos)");
+              System.out.println("--------------------------------------------------------");
+            }        
+          }while(!matcherIban.matches());
+
+          System.out.println("El saldo actual de la cuenta es de: " + banco.obtenerSaldo(iban) + "€.");
           break;
 
         case 7: // Sale del programa
