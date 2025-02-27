@@ -13,12 +13,13 @@ public class CuentaCorrienteEmpresa extends CuentaCorriente {
   };
 
   public String devolverInfoString(){
-    return "Titular: " + titular.nombre + " " + titular.apellidos + "\n" +
-            "Saldo: " + saldo + "\n" +
-            "IBAN: " + iban + "\n" +
-            "Máximo descubierto permitido: " + maxDescubierto + "\n" + 
-            "Tipo de interés por descubierto: " + tipoInteresDescubierto + "\n" + 
-            "Comisión por descubierto: " + comisionDescubierto + "\n" + 
-            "Lista de entidades: " + listaEntidades + "\n";
+    return titular.devolverInfoString() + "\n" +
+           "IBAN: " + iban + "\n" +
+           "Saldo: " + saldo + "\n" +
+           "Máximo descubierto permitido: " + maxDescubierto + "\n" + 
+           "Tipo de interés por descubierto: " + tipoInteresDescubierto + "\n" + 
+           "Comisión por descubierto: " + comisionDescubierto + "\n" + 
+           "Lista de entidades: " + listaEntidades + "\n" +
+           "--------------------------------------";
  }
 }

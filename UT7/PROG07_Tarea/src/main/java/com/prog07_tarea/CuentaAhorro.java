@@ -9,6 +9,10 @@ public class CuentaAhorro extends CuentaBancaria {
   };
 
   public String devolverInfoString(){
-    return "Cuenta de ahorro de: " + titular.nombre + " " + titular.apellidos + " con DNI: " + titular.dni + " con IBAN: " + iban + " y saldo: " + saldo + "€";
-  }; 
+    return titular.devolverInfoString() + "\n" +
+           "IBAN: " + iban + "\n" +
+           "Saldo: " + saldo + "\n" +
+           "Tipo de interés anual: " + tipoInteresAnual + "\n" +
+           "--------------------------------------";
+  }
 }

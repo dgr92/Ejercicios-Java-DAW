@@ -1,17 +1,35 @@
 package com.prog07_tarea;
 
+/**
+ * Clase Persona
+ * @author David Graciá Requena
+ */
 public class Persona implements Imprimible{
-    protected String nombre;
-    protected String apellidos;
-    protected String dni;
+  // Atributos de la clase persona
+  protected String nombre;
+  protected String apellidos;
+  protected String dni;
 
-    protected Persona(String nombre, String apellidos, String dni){
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.dni = dni;
-    };
+  /**
+   * Constructor que recibe los datos necesarios e instancia un objeto de la clase Persona
+   * @param nombre Nombre del titular
+   * @param apellidos Apellidos del titular
+   * @param dni DNI del titular
+   */
+  protected Persona(String nombre, String apellidos, String dni){
+    this.nombre = nombre;
+    this.apellidos = apellidos;
+    this.dni = dni;
+  };
 
-    public String devolverInfoString(){
-        return "Cliente: " + this.nombre + " " + this.apellidos + " con DNI: " + this.dni;
-    };
+  /**
+   * Método implementado desde la Interfaz Imprimible que devuelve un String con los datos del objeto de tipo Persona
+   * @return String con los datos del objeto de tipo Persona
+   */
+  public String devolverInfoString(){
+    return "\n--------------------------------------" + 
+           "\nNombre del titular: " + nombre +
+           "\nApellidos del titular: " + apellidos +
+           "\nDNI del titular: " + dni;
+  };
 }
