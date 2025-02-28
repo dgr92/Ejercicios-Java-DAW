@@ -2,6 +2,7 @@ package com.prog07_tarea;
 
 /**
  * Clase Persona
+ * Implementa la interfaz Imprimible para devolver los datos de una persona
  * @author David Graciá Requena
  */
 public class Persona implements Imprimible{
