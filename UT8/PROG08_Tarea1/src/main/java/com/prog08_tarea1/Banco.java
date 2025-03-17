@@ -8,6 +8,11 @@ import java.util.ArrayList;
  */
 public class Banco {
   // Atributos de la clase banco
+  /**
+   * Utilicé ArrayList en lugar de Array, porque no tiene un tamaño fijo y se pueden añadir o eliminar elementos de forma dinámica. 
+   * Además, ArrayList tiene métodos que facilitan la manipulación de los elementos, como add, remove, get, etc.
+   * 
+   */
   private ArrayList<CuentaBancaria> cuentasBanco; // ArrayList de cuentas que contiene el banco.
   private static final int MAX_CUENTAS = 100; // Número máximo de cuentas que puede contener el banco.
 
@@ -121,7 +126,7 @@ public class Banco {
    */
   protected boolean retiradaCuenta(String iban, double cantidad){
     for(int i = 0; i <cuentasBanco.size(); i++){ // Bucle que itera la lista de cuentas
-      if(cuentasBanco.get(i).getIban().equals(iban) && (cuentasBanco.get(i).saldo - cantidad) > 0){ // Comprueba si el IBAN existe y hay más dinero en la cuenta del que se quiere retirar
+      if(cuentasBanco.get(i).getIban().equals(iban) && (cuentasBanco.get(i).saldo - cantidad) >= 0){ // Comprueba si el IBAN existe y hay más dinero en la cuenta del que se quiere retirar
         cuentasBanco.get(i).saldo -= cantidad; // Retira la cantidad solicitada
         return true; // Devuelve true si se realizó correctamente
       }
@@ -143,5 +148,21 @@ public class Banco {
     }
     return -1;
   };
+
+
+  /**
+   * Método que recibe un IBAN y, si existe y la cuenta está a cero, la elimina
+   * @param iban IBAN de la cuenta
+   * @return true si se ha eliminado, false si no se ha eliminado
+   */
+  protected boolean eliminarCuenta(String iban){
+    for(int i = 0; i < cuentasBanco.size(); i++){
+      if(cuentasBanco.get(i).getIban().equals(iban) && cuentasBanco.get(i).saldo == 0){
+        cuentasBanco.remove(i);
+        return true;
+      }
+    }
+    return false;
+  }
 
 }

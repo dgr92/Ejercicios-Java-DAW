@@ -46,7 +46,8 @@ public class Principal {
       System.out.println("4. Realizar un ingreso en una cuenta.");
       System.out.println("5. Retirar efectivo de una cuenta.");
       System.out.println("6. Consultar el saldo actual de una cuenta.");
-      System.out.println("7. Salir de la aplicación.");
+      System.out.println("7. Eliminar cuenta.");
+      System.out.println("8. Salir de la aplicación.");
       System.out.println("------------------------------------\n\n");
 
       
@@ -345,7 +346,32 @@ public class Principal {
           }
           break;
 
-        case 7: // Sale del programa
+        case 7: // Elimina una cuenta
+          do { // Bucle que se repite mientras el IBAN no sea válido
+            System.out.println("Introduce el IBAN de la cuenta que deseas eliminar: ");
+            sc.nextLine(); // Limpia el buffer de entrada
+            iban = sc.nextLine();
+            matcherIban = patternIban.matcher(iban);
+
+            if (!matcherIban.matches()) { // Controla que el IBAN introducido sea válido
+              System.out.println("--------------------------------------------------------");
+              System.out.println("ERROR!! El IBAN introducido no tiene un formato válido. ");
+              System.out.println("Debe ser un formato ESNNNNNNNNNNNNNNNNNNNN. (20 dígitos)");
+              System.out.println("--------------------------------------------------------");
+            }        
+          } while (!matcherIban.matches());
+
+          // Si el IBAN existe y el saldo es 0, elimina la cuenta
+          if(banco.eliminarCuenta(iban)){
+            System.out.println("Cuenta eliminada correctamente.");
+          } else {
+            System.out.println("-------------------------------------------");
+            System.out.println("ERROR!! No se ha podido eliminar la cuenta.");
+            System.out.println("-------------------------------------------");
+          }
+          break;
+        
+        case 8: // Sale del programa
           exit = true; // Cambia el valor de la variable de control para salir del bucle del menú
           sc.close(); // Cierra el Scanner
           System.out.println("-----------------------");
