@@ -90,9 +90,9 @@ public class Principal {
           String autor = sc.nextLine(); 
 
 
-          System.out.print("\nISBN: ");
           do { // Bucle que se repite mientras que el ISBN introducido no sea válido
             try { 
+              System.out.print("\nISBN: ");
               isbn = sc.nextLong();
               sc.nextLine(); // Limpia el buffer
               isbnString = Long.toString(isbn);

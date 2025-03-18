@@ -11,10 +11,8 @@ public class Banco {
   /**
    * Utilicé ArrayList en lugar de Array, porque no tiene un tamaño fijo y se pueden añadir o eliminar elementos de forma dinámica. 
    * Además, ArrayList tiene métodos que facilitan la manipulación de los elementos, como add, remove, get, etc.
-   * 
    */
   private ArrayList<CuentaBancaria> cuentasBanco; // ArrayList de cuentas que contiene el banco.
-  private static final int MAX_CUENTAS = 100; // Número máximo de cuentas que puede contener el banco.
 
   // Constructor por defecto de la clase banco que inicializa el ArrayList de cuentas.
   protected Banco(){
@@ -27,10 +25,6 @@ public class Banco {
    * @return false si no se ha creado la nueva cuenta, true si se ha creado
    */
   protected boolean abrirCuenta(CuentaBancaria cuenta){
-    if(cuentasBanco.size() == MAX_CUENTAS){ // Si el banco está lleno, se devuelve false.
-      return false;
-    }
-
     for(int i = 0; i < cuentasBanco.size(); i++){
       if(cuentasBanco.get(i).iban == cuenta.iban){ // Si la cuenta ya existe, se devuelve false.
         return false;
