@@ -26,7 +26,7 @@ public abstract class CuentaBancaria implements Imprimible, Serializable{
     return titular.nombre;
   }
   
-  //Método para obtener el apellido
+  //Método para obtener los apellidos
   protected String getApellidos(){
     return titular.apellidos;
   }
